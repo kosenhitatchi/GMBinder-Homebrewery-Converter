@@ -2,11 +2,11 @@ javascript:(function(){
 if(location.href=='https://homebrewery.naturalcrit.com/new'){
 	const inputText = prompt('Enter source text:');
 	  const replacementList = [
-		  {term: "\\\\pagebreaknum", text: "{{pageNumber,auto}}\n\\page"},
+		  {term: "\\\\pagebreaknum[ \\t]*", text: "{{pageNumber,auto}}\n\\page"},
 		  {term: "@=====", text:"{{pageNumber,auto}}\n\\page"},
-		  {term: "\\\\pagebreak", text: "\\page"},
+		  {term: "\\\\pagebreak[ \\t]*", text: "\\page"},
 		  {term: "======", text: "\\page"},
-		  {term: "\\\\columnbreak", text: "\\column"},
+		  {term: "\\\\columnbreak[ \\t]*", text: "\\column"},
 		  {term: "(?:\\n)(>[\\s\\S]*?)(?:\\n[^>])", text: "{{note\n$1\n}}\n", flags: "gi"},
 		  {term: "(___[\\r\\n]+{{note)", text: "{{monster,frame", flags: "gi"},
 		  {term: "(___[\\r\\n]+{{monster,frame)", text: "{{monster,frame,wide", flags: "gi"},
