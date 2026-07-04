@@ -13,7 +13,12 @@ if(location.href=='https://homebrewery.naturalcrit.com/new'){
 		  {term: "^>\\s*?-\\s*", text: ""},
 		  {term: "^(>\\s*)", text: ""},
 		  {term: "^(\\*\\*.+\\*\\*)(.*)", text: "$1 :: $2"},
-		  {term: ".phb", text: ".page"}
+		  {term: ".phb", text: ".page"},
+		  {	term: "<div\\s+class=['\"][^'\"]*\\bclassTable\\b[^'\"]*\\bwide\\b[^'\"]*['\"]>([\\s\\S]*?)<\\/div>",
+			text: "{{classTable,frame,decoration,wide\n$1\n}}"
+			},
+		  {term: "<div\\s+class=['\"]wide['\"]>([\\s\\S]*?)<\\/div>",text: "{{wide\n$1\n}}"},
+		  
 	  ];
 	  var outputText = '\n' + inputText + '\n\n';
 	  for (const replacement of replacementList){
