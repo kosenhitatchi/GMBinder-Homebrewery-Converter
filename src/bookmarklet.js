@@ -18,7 +18,10 @@ if(location.href=='https://homebrewery.naturalcrit.com/new'){
 			text: "{{classTable,frame,decoration,wide\n$1\n}}"
 			},
 		  {term: "<div\\s+class=['\"]wide['\"]>([\\s\\S]*?)<\\/div>",text: "{{wide\n$1\n}}"},
-		  {term: "<div\\s+class=['\"]partpage['\"]>([\\s\\S]*?)<\\/div>", text: "{{partCover}}\n$1"},
+		  {
+			term: "<div\\s+class=['\"]footnote['\"]>([\\s\\S]*?)<\\/div>", 
+			text: "{{footnote\n$1\n}}"
+		},
 		  {term: "<div\\s+class=['\"]partpage['\"]>\\s*#\\s*Part\\s+([^\\r\\n]+)\\s*[\\r\\n]+#####\\s*([^\\r\\n]+)\\s*<\\/div>", text: "{{partCover}}\n\n# PART $1\n## $2"},
 		  
 	  ];
