@@ -12,7 +12,7 @@ if(location.href=='https://homebrewery.naturalcrit.com/new'){
 		  {term: "(___[\\r\\n]+{{monster,frame)", text: "{{monster,frame,wide", flags: "gi"},
 		  {term: "^>\\s*?-\\s*", text: ""},
 		  {term: "^(>\\s*)", text: ""},
-		  {term: "^(?:<br>\\s*)?\\*{2,3}([^*]+?)(?:\\.)?:?\\*{2,3}\\s*(.*)$", text: "**$1**:: $2",},
+		  {term: "^(?:\\s*<br>\\s*)?\\s*\\*{2,3}([^*]+?)\\.?\\*{2,3}\\s*(.*)$",text: "**$1**:: $2",},
 		  {term: ".phb", text: ".page"},
 		  {term: "<div\\s+style=['\"]text-align\\s*:\\s*center\\s*;?['\"]>([\\s\\S]*?)<\\/div>", 
 			text: "{{text-align:center\n$1\n}}"
