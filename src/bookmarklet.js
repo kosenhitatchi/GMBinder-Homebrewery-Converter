@@ -64,6 +64,8 @@ if(location.href=='https://homebrewery.naturalcrit.com/new'){
 	  localStorage.setItem('homebrewery-new', outputText);let style = localStorage.getItem('homebrewery-new-style') || '';
 	  style += '\n.page {\n  font-size: 0.317cm;\n  padding: 1cm 1.7cm 1.5cm;\n}';
 	  style += '\n.page .note {\n  border-width: 11px;\n}';
+	  style += '\n.cover-header {\n  position:absolute;\n  font-family:NodestoCapsCondensed;\n  transform:scale(2,2)!important;\n  font-weight:normal;\n  font-size:36px;\n  color:white;\n  width:700px;\n  text-shadow:1px 1px 2px #000,-1px 1px 2px #000,1px -1px 2px #000,-1px -1px 2px #000;\n  transform:scaleY(3) scaleX(1);\n  top:50px;\n  text-align:center;\n}\n';
+	  style += '\n.cover-footer {\n  position:absolute;\n  font-family:NodestoCapsCondensed;\n  font-size:25px;\n  color:white;\n  bottom:50px;\n  width:700px;\n  right:0;\n  text-shadow:1px 1px 2px #000,-1px 1px 2px #000,1px -1px 2px #000,-1px -1px 2px #000;\n  filter:opacity(100%);\n  text-align:center;\n}\n';
 	  localStorage.setItem('homebrewery-new-style', style);
 	  localStorage.setItem('homebrewery-new-meta','{"renderer":"V3"}');
 	  location.reload();
