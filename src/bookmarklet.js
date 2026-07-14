@@ -17,9 +17,13 @@ if(location.href=='https://homebrewery.naturalcrit.com/new'){
 		  {term: "<div\\s+style=['\"]text-align\\s*:\\s*center\\s*;?['\"]>([\\s\\S]*?)<\\/div>", 
 			text: "{{text-align:center\n$1\n}}"
 			},
-		  {	term: "<div\\s+class=['\"][^'\"]*\\bclassTable\\b[^'\"]*\\bwide\\b[^'\"]*['\"]>([\\s\\S]*?)<\\/div>",
-			text: "{{classTable,frame,decoration,wide\n$1\n}}"
-		  },
+		  {
+				term: /<div\s+class=['"]([^'"]*\bclassTable\b[^'"]*)['"]>([\s\S]*?)<\/div>/g,
+				text: function(match, classes, content) {
+					let wide = /\bwide\b/.test(classes) ? ",wide" : "";
+					return "{{classTable,frame,decoration" + wide + "\n" + content + "\n}}";
+				}
+			},
 		  {term: "<div\\s+class=['\"]wide['\"]>([\\s\\S]*?)<\\/div>",text: "{{wide\n$1\n}}"},
 		  {
 			term: "<div\\s+class=['\"]footnote['\"]>([\\s\\S]*?)<\\/div>", 
