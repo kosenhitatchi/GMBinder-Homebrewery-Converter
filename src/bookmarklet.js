@@ -14,16 +14,23 @@ if(location.href=='https://homebrewery.naturalcrit.com/new'){
 		  {term: "^(>\\s*)", text: ""},
 		  {term: "^(?:<br>\\s*)?\\*{2,3}([^*]+?)(?:\\.)?:?\\*{2,3}\\s*(.*)$", text: "**$1**:: $2",},
 		  {term: ".phb", text: ".page"},
+		  {term: "<div\\s+style=['\"]text-align\\s*:\\s*center\\s*;?['\"]>([\\s\\S]*?)<\\/div>", 
+			text: "{{text-align:center\n$1\n}}"
+			},
 		  {	term: "<div\\s+class=['\"][^'\"]*\\bclassTable\\b[^'\"]*\\bwide\\b[^'\"]*['\"]>([\\s\\S]*?)<\\/div>",
 			text: "{{classTable,frame,decoration,wide\n$1\n}}"
-			},
+		  },
 		  {term: "<div\\s+class=['\"]wide['\"]>([\\s\\S]*?)<\\/div>",text: "{{wide\n$1\n}}"},
 		  {
 			term: "<div\\s+class=['\"]footnote['\"]>([\\s\\S]*?)<\\/div>", 
 			text: "{{footnote\n$1\n}}"
-		},
+			},
 		  {term: "<div\\s+class=['\"]partpage['\"]>\\s*#\\s*Part\\s+([^\\r\\n]+)\\s*[\\r\\n]+#####\\s*([^\\r\\n]+)\\s*<\\/div>", text: "{{partCover}}\n\n# PART $1\n## $2"},
-		  
+		  {
+			term: "([^\\n])\\n(\\{\\{)",
+			text: "$1\n\n$2",
+			flags: "g"
+		  }
 	  ];
 	  var outputText = '\n' + inputText + '\n\n';
 	  for (const replacement of replacementList){
