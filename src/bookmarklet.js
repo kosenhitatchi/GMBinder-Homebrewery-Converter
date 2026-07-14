@@ -13,6 +13,10 @@ if(location.href=='https://homebrewery.naturalcrit.com/new'){
 		  {term: "^>\\s*?-\\s*", text: ""},
 		  {term: "^(>\\s*)", text: ""},
 		  {term: "^(?:\\s*<br>\\s*)?\\s*\\*{2,3}([^*]+?)\\.?\\*{2,3}\\s*(.*)$",text: "**$1**:: $2",},
+		  {
+				term: "<div\\s+style=['\"]([^'\"]+?);?['\"]>\\s*<\\/div>",
+				text: "\n\n{{$1\n\n}}\n\n"
+		  },
 		  {term: ".phb", text: ".page"},
 		  {term: "<div\\s+style=['\"]text-align\\s*:\\s*center\\s*;?['\"]>([\\s\\S]*?)<\\/div>", 
 			text: "{{text-align:center\n$1\n}}"
@@ -25,7 +29,6 @@ if(location.href=='https://homebrewery.naturalcrit.com/new'){
 				}
 			},
 		  {term: "<div\\s+class=['\"]partpage['\"]>\\s*#\\s*Part\\s+([^\\r\\n]+)\\s*[\\r\\n]+#####\\s*([^\\r\\n]+)\\s*<\\/div>", text: "{{partCover}}\n\n# PART $1\n## $2"},
-		  
 		  {term: "<div\\s+class=['\"]wide['\"]>([\\s\\S]*?)<\\/div>",text: "{{wide\n$1\n}}"},
 		  {
 			term: "<div\\s+class=['\"]footnote['\"]>([\\s\\S]*?)<\\/div>", 
