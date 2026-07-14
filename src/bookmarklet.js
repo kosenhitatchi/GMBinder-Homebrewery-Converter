@@ -36,9 +36,10 @@ if(location.href=='https://homebrewery.naturalcrit.com/new'){
 	  for (const replacement of replacementList){
 		  outputText = outputText.replace(new RegExp(replacement.term, replacement.flags || 'gim'), replacement.text);
 	  }
-	  localStorage.setItem('homebrewery-new', outputText);
-	  localStorage.setItem('homebrewery-new-style', '.page {\n  font-size: 0.317cm;\n  padding: 1cm 1.7cm 1.5cm;\n}');
-	  localStorage.setItem('homebrewery-new-style', '.page .note  {\n  border-width: 11px;;\n}');
+	  localStorage.setItem('homebrewery-new', outputText);let style = localStorage.getItem('homebrewery-new-style') || '';
+	  style += '\n.page {\n  font-size: 0.317cm;\n  padding: 1cm 1.7cm 1.5cm;\n}';
+	  style += '\n.page .note {\n  border-width: 11px;\n}';
+	  localStorage.setItem('homebrewery-new-style', style);
 	  localStorage.setItem('homebrewery-new-meta','{"renderer":"V3"}');
 	  location.reload();
 	  };
