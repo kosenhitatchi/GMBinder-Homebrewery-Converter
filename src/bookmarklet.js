@@ -24,12 +24,25 @@ if(location.href=='https://homebrewery.naturalcrit.com/new'){
 					return "{{classTable,frame,decoration" + wide + "\n" + content + "\n}}";
 				}
 			},
+		  {term: "<div\\s+class=['\"]partpage['\"]>\\s*#\\s*Part\\s+([^\\r\\n]+)\\s*[\\r\\n]+#####\\s*([^\\r\\n]+)\\s*<\\/div>", text: "{{partCover}}\n\n# PART $1\n## $2"},
+		  
 		  {term: "<div\\s+class=['\"]wide['\"]>([\\s\\S]*?)<\\/div>",text: "{{wide\n$1\n}}"},
 		  {
 			term: "<div\\s+class=['\"]footnote['\"]>([\\s\\S]*?)<\\/div>", 
 			text: "{{footnote\n$1\n}}"
 			},
-		  {term: "<div\\s+class=['\"]partpage['\"]>\\s*#\\s*Part\\s+([^\\r\\n]+)\\s*[\\r\\n]+#####\\s*([^\\r\\n]+)\\s*<\\/div>", text: "{{partCover}}\n\n# PART $1\n## $2"},
+		{
+			term: "<div\\s+class=['\"]back-cover-header['\"]>\\s*([\\s\\S]*?)\\s*<\\/div>",
+			text: "{{backCover}}\n# $1"
+		},
+		{
+ 			   term: "<div\\s+class=['\"]back-cover-diamond['\"][^>]*>\\s*<\\/div>",
+    			text: "___"
+		},
+		{
+			term: "<div\\s+class=['\"]back-cover-(?:text|close)['\"]>\\s*([\\s\\S]*?)\\s*<\\/div>",
+			text: "$1"
+		},
 		  {
 			term: "([^\\n])\\n(\\{\\{)",
 			text: "$1\n\n$2",
